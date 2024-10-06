@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+        }
+        .calculator {
+            background-color: #1e1e1e;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            width: 300px;
+        }
+        #input {
+            width: 100%;
+            height: 80px;
+            font-size: 36px;
+            text-align: right;
+            border: none;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        button {
+            border: none;
+            font-size: 24px;
+            height: 70px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #num {
+            background-color: #2d2d2d;
+        }
+        #num:hover {
+            background-color: #3d3d3d;
+        }
+        #operator {
+            background-color: #ff9500;
+            color: #ffffff;
+        }
+        #operator:hover {
+            background-color: #ffaa33;
+        }
+        #cl {
+            background-color: #a5a5a5;
+            color: #000000;
+        }
+        #cl:hover {
+            background-color: #b5b5b5;
+        }
+        #equals {
+            background-color: #ff9500;
+            color: #ffffff;
+        }
+        #equals:hover {
+            background-color: #ffaa33;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input id="input" type="text" readonly>
+        <div class="buttons">
+            <button id="cl" onclick="cl()">AC</button>
+            <button id="operator" onclick="getValue('/')">÷</button>
+            <button id="operator" onclick="getValue('*')">×</button>
+            <button id="operator" onclick="getValue('-')">-</button>
+            
+            <button id="num" onclick="getValue(7)">7</button>
+            <button id="num" onclick="getValue(8)">8</button>
+            <button id="num" onclick="getValue(9)">9</button>
+            <button id="operator" onclick="getValue('+')">+</button>
+            
+            <button id="num" onclick="getValue(4)">4</button>
+            <button id="num" onclick="getValue(5)">5</button>
+            <button id="num" onclick="getValue(6)">6</button>
+            <button id="num" onclick="getValue(0)">0</button>
+            
+            <button id="num" onclick="getValue(1)">1</button>
+            <button id="num" onclick="getValue(2)">2</button>
+            <button id="num" onclick="getValue(3)">3</button>
+            <button id="num" onclick="getValue('.')">.</button>
+            
+            <button id="equals" onclick="result()" style="grid-column: span 4;">=</button>
+        </div>
+    </div>
+
+    <script>
+        function getValue(value){
+            document.getElementById("input").value = document.getElementById("input").value + value
+        }
+        function result(){
+            var equal = eval(document.getElementById("input").value);
+            document.getElementById("input").value = equal;
+        }
+        function cl(){
+            document.getElementById("input").value = "";
+        }
+    </script>
+</body>
+</html>
